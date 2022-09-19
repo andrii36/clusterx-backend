@@ -3,7 +3,7 @@ const router = express.Router();
 const RealEstate = require('../Models/realEstate');
 const verify = require('../verifyToken');
 
-router.get('/', verify, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const realEstates = await RealEstate.find();
         res.json({
