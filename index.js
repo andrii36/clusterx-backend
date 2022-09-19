@@ -2,11 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv/config');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+//const cors = require('cors');
 
 const app = express();
 //Middlewares
-app.use(cors());
+//app.use(cors());
+app.use('*', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    next();
+  });
 app.use(bodyParser.json());
 //IMPORT ROUTES
 const realEstateRoutes = require('./routes/real_estate');
